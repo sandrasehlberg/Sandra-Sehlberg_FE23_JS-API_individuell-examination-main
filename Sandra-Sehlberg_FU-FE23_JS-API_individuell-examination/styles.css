@@ -18,11 +18,19 @@ body {
     border-bottom: .2rem solid #322838;
   }
 
+#search-section {
+    display: flex;   
+    align-items: center;
+    gap: .5rem;
+    margin-right: 8rem;
+    padding-top: 4rem;
+}
+
 #search-field {
     height: 3rem;
     width: 25rem;
-    border-radius: 4px;
     border: 1px solid #f5f4f8;
+    border-radius: 2px;
     font-size: larger;
     color: #322838;
     padding-left: 1rem;
@@ -33,9 +41,13 @@ body {
     width: 5rem;
     background-color: #ffd029;
     border: 1px solid #fcf3d3;
-    border-radius: 4px;
+    border-radius: 2px;
     font-size: larger;
     color: #190b22;
+}
+
+#titles {
+    margin-left: 8rem;
 }
 
 h1 {
@@ -51,7 +63,6 @@ h2 {
     font-weight: 400;
     font-size: 2.05em;
     color: #ffd029;
-    text-align: right;
     letter-spacing: .49em;
     padding-right: .2em;
 }
@@ -63,7 +74,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 3.75rem;
+    margin-top: 3rem;
 }
 
 #sun-and-planets {
@@ -172,7 +183,8 @@ footer {
 }
 
 h4 {
-    margin-left: 1rem;
+    margin-left: 8rem;
+    margin-top: 6rem;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 200;
     color: #ffd029;
