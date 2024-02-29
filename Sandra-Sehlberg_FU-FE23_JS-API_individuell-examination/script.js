@@ -30,8 +30,7 @@ fetch('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/keys', {
     console.error('Något gick fel:', error); 
 });
 
-//GET SEARCH RESULTS AND DISPLAY DATA
-
+//DISPLAY SECTION WITH PLANET INFO UPON SEARCH BUTTON CLICK
 submitBtn.addEventListener('click', function()
 { 
     let newDiv = document.createElement('div');
@@ -39,16 +38,18 @@ submitBtn.addEventListener('click', function()
     newDiv.className = "overlay";
     let footer = document.querySelector('footer');
     document.body.insertBefore(newDiv, footer);
+    
     let searchText = searchField.value; 
 
-let matchingPlanets = allPlanetsData.filter(planet => {
+    let matchingPlanets = allPlanetsData.filter(planet => {
     return planet.name.toLowerCase().includes(searchText.toLowerCase());
 });
+
 newDiv.innerHTML = '';
 
 matchingPlanets.forEach(planet => {
     let planetName = document.createElement('h1');
-    planetName.textContent = planet.name;
+    planetName.innerHTML = planet.name;
     planetName.className = "planetNameClass";
 
     let latinLabel = document.createElement('h3');
@@ -58,18 +59,22 @@ matchingPlanets.forEach(planet => {
     let planetInfo = document.createElement('p');
     planetInfo.textContent = planet.desc;
     
-    let planetArea = document.createElement('p');
-    planetArea.innerHTML = 'OMKRETS: ' + planet.circumference + ' km';
+    let planetSize = document.createElement('p');
+    planetSize.innerHTML = 'OMKRETS: ' + planet.circumference + ' km';
    
     let distanceInfo = document.createElement('p');
     distanceInfo.innerHTML = 'AVSTÅND FRÅN SOLEN: ' + planet.distance + ' km';
+
+    let orbitalInfo = document.createElement('p');
+    orbitalInfo.innerHTML = 'ANTAL DYGN RUNT SOLEN PER ÅR: ' + planet.orbitalPeriod;
 
 
   newDiv.appendChild(planetName);
   newDiv.appendChild(latinLabel);  
   newDiv.appendChild(planetInfo);
-  newDiv.appendChild(planetArea);
+  newDiv.appendChild(planetSize);
   newDiv.appendChild(distanceInfo);
- 
+  newDiv.appendChild(orbitalInfo);
+
 });
 })
