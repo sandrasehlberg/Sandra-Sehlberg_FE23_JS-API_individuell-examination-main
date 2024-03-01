@@ -30,12 +30,12 @@ fetch('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/keys', {
     console.error('Något gick fel:', error); 
 });
 
-//DISPLAY SECTION WITH PLANET INFO UPON SEARCH BUTTON CLICK
+//CREATE SECTION WHICH WILL DISPLAY PLANET INFO UPON SEARCH BUTTON CLICK
 submitBtn.addEventListener('click', function()
 { 
     let newDiv = document.createElement('div');
     newDiv.id = 'new-div';
-    newDiv.className = "overlay";
+    newDiv.className = "planet-info";
     let footer = document.querySelector('footer');
     document.body.insertBefore(newDiv, footer);
     
@@ -45,6 +45,14 @@ submitBtn.addEventListener('click', function()
     return planet.name.toLowerCase().includes(searchText.toLowerCase());
 });
 
+//CLOSES INFO SECTION WHEN CLICKING ON THE CLOSE BUTTON
+newDiv.addEventListener("click", e => {
+    if (e.target.className === "close-btn") {
+      newDiv.style.display = "none"
+    }
+  })
+
+//FUNCTIONS FOR DISPLAYING PLANET INFO
 newDiv.innerHTML = '';
 
 matchingPlanets.forEach(planet => {
@@ -60,21 +68,35 @@ matchingPlanets.forEach(planet => {
     planetInfo.textContent = planet.desc;
     
     let planetSize = document.createElement('p');
-    planetSize.innerHTML = 'OMKRETS: ' + planet.circumference + ' km';
+    planetSize.innerHTML = '<b>OMKRETS:</b> ' + planet.circumference + ' km';
+
+    let planetTempNight= document.createElement('p');
+    planetTempNight.innerHTML = '<b>TEMPERATUR NATT: </b>' + planet.temp.night + ' C';
+    
+    let planetTempDay= document.createElement('p');
+    planetTempDay.innerHTML = '<b>TEMPERATUR DAG: </b>' + planet.temp.day + ' C';
    
     let distanceInfo = document.createElement('p');
-    distanceInfo.innerHTML = 'AVSTÅND FRÅN SOLEN: ' + planet.distance + ' km';
+    distanceInfo.innerHTML = '<b>AVSTÅND FRÅN SOLEN:</b> ' + planet.distance + ' km';
 
     let orbitalInfo = document.createElement('p');
-    orbitalInfo.innerHTML = 'ANTAL DYGN RUNT SOLEN PER ÅR: ' + planet.orbitalPeriod;
+    orbitalInfo.innerHTML = '<b>ANTAL DYGN RUNT SOLEN PER ÅR:</b> ' + planet.orbitalPeriod;
 
+    let closeButton = document.createElement('close-btn');
+    closeButton.className = "close-btn"
+    closeButton.innerText = 'STÄNG';
 
-  newDiv.appendChild(planetName);
-  newDiv.appendChild(latinLabel);  
-  newDiv.appendChild(planetInfo);
-  newDiv.appendChild(planetSize);
-  newDiv.appendChild(distanceInfo);
-  newDiv.appendChild(orbitalInfo);
+    newDiv.appendChild(planetName);
+    newDiv.appendChild(latinLabel);  
+    newDiv.appendChild(planetInfo);
+    newDiv.appendChild(planetSize);
+    newDiv.appendChild(planetTempNight);
+    newDiv.appendChild(planetTempDay);
+    newDiv.appendChild(distanceInfo);
+    newDiv.appendChild(orbitalInfo);
+    newDiv.appendChild(closeButton);
+  
 
 });
+
 })

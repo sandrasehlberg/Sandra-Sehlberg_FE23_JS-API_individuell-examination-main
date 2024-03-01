@@ -22,7 +22,7 @@ body {
     display: flex;   
     align-items: center;
     gap: .5rem;
-    margin-right: 8rem;
+    margin-right: 4rem;
     padding-top: 4rem;
 }
 
@@ -47,13 +47,14 @@ body {
 }
 
 #titles {
-    margin-left: 8rem;
+    margin-left: 4rem;
+    margin-top: 1.8rem;
 }
 
 h1 {
     font-family: "Secular One", sans-serif;
     font-weight: 400;
-    font-size: 4em;
+    font-size: 3em;
     color: #f5f4f8;
     letter-spacing: .2em;
 }
@@ -65,6 +66,7 @@ h2 {
     color: #ffd029;
     letter-spacing: .49em;
     padding-right: .2em;
+    margin-bottom: 1rem;
 }
 
 /*MAIN*/
@@ -89,6 +91,10 @@ main {
     height: 30rem;
     border-radius: 0 15rem 15rem 0;
     background-color: #FFD029;
+    &:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px 5px rgb(199, 170, 114);
+}
 }
 
 #planet-container {
@@ -103,6 +109,7 @@ main {
     border-radius: 50%;
     &:hover {
         transform: scale(2);
+        box-shadow: 0 0 10px 5px rgba(235, 188, 188, 0.7);
       }
 }
 
@@ -150,6 +157,9 @@ main {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
+    &:hover {
+        box-shadow: 0 0 10px 5px rgba(235, 188, 188, 0.7);
+      }
 }
 
 #saturnus-ring {
@@ -176,6 +186,8 @@ main {
 }
 
 footer {
+    display: flex;
+    justify-content: center;
     padding-top: 1rem;
     margin-top: 3rem;
     color: #e7e3f0;
@@ -183,16 +195,30 @@ footer {
 }
 
 h4 {
-    margin-left: 8rem;
     margin-top: 6rem;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 200;
     color: #ffd029;
 }
 
-/* OVERLAY */
+/* INFO SECTION */
 
-.overlay {
+.close-btn {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EF5F5F;
+    width: 4rem;
+    height: 2rem;
+    border-radius: 2px;
+}
+
+.planet-info {
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, #190b22, #0c164d, #190b22);
+    box-shadow: 0 0 10px 5px #322838;
     color: #f5f4f8;
     font-size: large;
     display: flex;
@@ -217,10 +243,11 @@ h4 {
     font-weight: 300;
     font-size: 2rem;
     letter-spacing: 4px;
-    margin-bottom: 1, 5rem;
+    margin-bottom: 1,5rem;
     text-transform: uppercase;
   }
 
 p {
-    font-family: "Roboto", serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 200;
 }
